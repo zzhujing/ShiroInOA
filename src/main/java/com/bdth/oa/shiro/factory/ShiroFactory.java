@@ -1,9 +1,6 @@
 package com.bdth.oa.shiro.factory;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.bdth.oa.domain.User;
-import com.bdth.oa.mapper.RoleMapper;
-import com.bdth.oa.mapper.UserMapper;
 import com.bdth.oa.shiro.ShiroUser;
 import com.bdth.oa.shiro.state.ManagerStatus;
 import com.bdth.oa.utils.SpringContextHolder;
@@ -12,7 +9,6 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.util.ByteSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,11 +23,6 @@ import static java.util.stream.Collectors.toList;
 @Transactional(readOnly = true)
 public class ShiroFactory implements IShiro {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private RoleMapper roleMapper;
     private  final IConstantFactory constantFactory = ConstantFactory.me();
 
     public static IShiro me() {
@@ -40,7 +31,7 @@ public class ShiroFactory implements IShiro {
 
     @Override
     public User user(String account) {
-        User user = userMapper.selectOne(Wrappers.<User>lambdaQuery().eq(User::getAccount, account));
+        User user = constantFactory.getUserByAccount(account);
         // 账号不存在
         if (null == user) {
             throw new CredentialsException();
@@ -67,7 +58,6 @@ public class ShiroFactory implements IShiro {
         shiroUser.setRoleNames(roleNameList);
         return shiroUser;
     }
-
     /**
      * 根据角色ID获取所有的资源url
      * @param roleId 角色id
@@ -75,7 +65,7 @@ public class ShiroFactory implements IShiro {
      */
     @Override
     public List<String> findPermissionsByRoleId(Integer roleId) {
-        return roleMapper.findPermissionByRoleId(roleId);
+        return constantFactory.findPermissionsByRoleId(roleId);
     }
 
     @Override

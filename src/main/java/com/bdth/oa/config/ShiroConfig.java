@@ -52,6 +52,7 @@ public class ShiroConfig {
         Map<String, String> filterMap = new LinkedHashMap<>();
 //        filterMap.put("/", "anon");
         filterMap.put("/login", "anon");
+        filterMap.put("/logout", "logout");
         filterMap.put("/**", "authc");
         shiroFilterFactoryBean.setLoginUrl("/login");   //设置认证跳转url
         shiroFilterFactoryBean.setSuccessUrl("/");   //认证成功跳转页面

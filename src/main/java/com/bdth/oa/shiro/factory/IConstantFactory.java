@@ -1,6 +1,7 @@
 package com.bdth.oa.shiro.factory;
 
 import com.bdth.oa.domain.Dict;
+import com.bdth.oa.domain.User;
 
 import java.util.List;
 
@@ -17,6 +18,12 @@ public interface IConstantFactory {
      */
     String getUserNameById(Integer userId);
 
+    /**
+     * 根据用户账号获取用户信息
+     * @param account
+     * @return
+     */
+    User getUserByAccount(String account);
     /**
      * 根据用户id获取用户账号
      *
@@ -40,6 +47,13 @@ public interface IConstantFactory {
      */
     String getSingleRoleTip(Integer roleId);
 
+
+    /**
+     * 根据角色ID获取角色对应资源列表
+     * @param roleId
+     * @return
+     */
+    List<String> findPermissionsByRoleId(Integer roleId);
     /**
      * 获取部门名称
      */
@@ -109,5 +123,6 @@ public interface IConstantFactory {
      * 获取所有父部门id
      */
     List<Integer> getParentDeptIds(Integer deptid);
+
 
 }
