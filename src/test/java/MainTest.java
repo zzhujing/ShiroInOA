@@ -1,6 +1,9 @@
 import com.bdth.oa.utils.GeneratorPicUtil;
+import org.springframework.util.Base64Utils;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * @author hj
@@ -8,6 +11,7 @@ import java.io.IOException;
  */
 public class MainTest {
     public static void main(String[] args) throws IOException {
-        GeneratorPicUtil.generateImg("李小龙","E:\\workspace\\oa","李小龙");
+        String result = Base64Utils.encodeToString(Arrays.copyOf("oa".getBytes(), 16));
+        System.out.println(result);
     }
 }

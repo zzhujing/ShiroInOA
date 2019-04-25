@@ -4,11 +4,13 @@ com\bdth\oa\utils\SpringContextHolder.class
 com\bdth\oa\websocket\WebSocket.class
 com\bdth\oa\service\RelationService.class
 com\bdth\oa\utils\GeneratorPicUtil.class
+com\bdth\oa\controller\request\LoginRequest$LoginRequestBuilder.class
 com\bdth\oa\shiro\factory\ConstantFactory.class
 com\bdth\oa\CodeGenerator.class
 com\bdth\oa\domain\LoginLog.class
 com\bdth\oa\controller\LoginLogController.class
 com\bdth\oa\service\impl\DictServiceImpl.class
+com\bdth\oa\exception\ErrorTip$ErrorTipBuilder.class
 com\bdth\oa\controller\RoleController.class
 com\bdth\oa\domain\Menu.class
 com\bdth\oa\utils\BaseResult$BaseResultBuilder.class
@@ -27,6 +29,7 @@ com\bdth\oa\config\MyBatisPlusConfig.class
 com\bdth\oa\domain\User.class
 com\bdth\oa\config\ShiroConfig.class
 com\bdth\oa\shiro\factory\IShiro.class
+com\bdth\oa\controller\request\LoginRequest.class
 com\bdth\oa\service\DeptService.class
 com\bdth\oa\utils\BaseEnum.class
 com\bdth\oa\CodeGenerator$1.class
@@ -51,12 +54,14 @@ com\bdth\oa\controller\DictController.class
 com\bdth\oa\controller\RelationController.class
 com\bdth\oa\mapper\MenuMapper.class
 com\bdth\oa\shiro\state\ManagerStatus.class
+com\bdth\oa\exception\ErrorTip.class
 com\bdth\oa\shiro\ShiroUser.class
 com\bdth\oa\service\impl\UserServiceImpl.class
 com\bdth\oa\service\MenuService.class
 com\bdth\oa\service\impl\RelationServiceImpl.class
 com\bdth\oa\domain\Dept.class
 com\bdth\oa\service\impl\LoginLogServiceImpl.class
+com\bdth\oa\exception\GlobalExcpeitonHandler.class
 com\bdth\oa\MainApplication.class
 com\bdth\oa\mapper\RelationMapper.class
 com\bdth\oa\controller\MenuController.class

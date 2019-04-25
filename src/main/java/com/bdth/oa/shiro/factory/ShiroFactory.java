@@ -68,6 +68,11 @@ public class ShiroFactory implements IShiro {
         return constantFactory.findPermissionsByRoleId(roleId);
     }
 
+    /**
+     * 根据角色ID得到角色名称
+     * @param roleId 角色id
+     * @return
+     */
     @Override
     public String findRoleNameByRoleId(Integer roleId) {
         return constantFactory.getSingleRoleName(roleId);

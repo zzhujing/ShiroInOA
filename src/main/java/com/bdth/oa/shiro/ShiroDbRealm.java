@@ -37,7 +37,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
         //3.返回
         return shiro.info(shiroUser, user, getName());
     }
-
     /**
      * 权限认证
      */
@@ -57,7 +56,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
         info.setRoles(roleNames);
         return info;
     }
-
     /**
      * 设置认证加密方式
      */

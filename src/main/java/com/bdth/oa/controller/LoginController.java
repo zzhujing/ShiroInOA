@@ -4,6 +4,7 @@ import com.bdth.oa.controller.request.LoginRequest;
 import com.bdth.oa.shiro.ShiroKit;
 import com.bdth.oa.shiro.ShiroUser;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -27,6 +28,7 @@ public class LoginController {
 
     /**
      * 跳转到登录页面
+     *
      * @param session session
      * @return view视图名
      */
@@ -41,8 +43,9 @@ public class LoginController {
 
     /**
      * 登录
+     *
      * @param request 登录请求参数
-     * @param session  session
+     * @param session session
      * @return view视图名
      */
     @PostMapping("/login")
@@ -54,6 +57,13 @@ public class LoginController {
             }
             Subject subject = ShiroKit.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(request.getUsername(), request.getPassword());
+
+            //是否记住我
+            if (StringUtils.isNotEmpty(request.getRemember())) {
+                token.setRememberMe(true);
+            }else{
+                token.setRememberMe(false);
+            }
             //开始认证
             subject.login(token);
             //获取封装的user
@@ -65,6 +75,17 @@ public class LoginController {
             model.addAttribute("message", "登录失败");
             return "login";
         }
+        return "redirect:/";
+    }
+
+
+    /**
+     * 登出
+     * @return
+     */
+    @GetMapping("/logout")
+    public String logout() {
+        ShiroKit.getSubject().logout();
         return "redirect:/";
     }
 }
